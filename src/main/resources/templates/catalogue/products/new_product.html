@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый товар &ndash; Сельмаг</title>
+</head>
+<body>
+<a th:href="@{/catalogue/products/list}">&larr; К списку товаров</a>
+<h1>Новый товар</h1>
+<form th:method="post" th:action="@{/catalogue/products/create}">
+    <label>
+        Название: <br>
+        <input type="text" name="title"> <br>
+    </label><br>
+    <label>
+        Описание: <br>
+        <textarea name="details"></textarea>
+    </label>
+    <button type="submit">Создать</button>
+</form>
+
+</body>
+</html>

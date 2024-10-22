@@ -11,11 +11,11 @@ public class InMemoryProductRepository implements ProductRepository {
 
     private List<Product> products = Collections.synchronizedList(new LinkedList<>());
 
-//    public InMemoryProductRepository() {
-//        IntStream.range(1,4)
-//                .forEach(i -> this.products.add(new Product(i,"Товар №%d".formatted(i),
-//                        "Описание товара №%d".formatted(i))));
-//    }
+    public InMemoryProductRepository() {
+        IntStream.range(1, 4)
+                .forEach(i -> this.products.add(new Product(i, "Товар №%d".formatted(i),
+                        "Описание товара №%d".formatted(i))));
+    }
 
     @Override
     public List<Product> findAll() {
@@ -36,5 +36,10 @@ public class InMemoryProductRepository implements ProductRepository {
     public Optional<Product> findById(Integer productId) {
         return this.products.stream().filter(product -> Objects.equals(product.getId(), productId))
                 .findFirst();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        this.products.removeIf(product -> Objects.equals(id, product.getId()));
     }
 }

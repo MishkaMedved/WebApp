@@ -7,17 +7,22 @@
 <body>
 <a th:href="@{/catalogue/products/list}">&larr; К списку товаров</a>
 <h1>Новый товар</h1>
+<div th:if="${errors}">
+    <h1>Допущены ошибки</h1>
+    <ul>
+        <li th:each="error: ${errors}" th:text="${error}"></li>
+    </ul>
+</div>
 <form th:method="post" th:action="@{/catalogue/products/create}">
     <label>
         Название: <br>
-        <input type="text" name="title"> <br>
+        <input type="text" name="title" th:value="${payload?.title}"> <br>
     </label><br>
     <label>
         Описание: <br>
-        <textarea name="details"></textarea>
+        <textarea name="details" th:text="${payload?.details}"></textarea>
     </label>
     <button type="submit">Создать</button>
 </form>
-
 </body>
 </html>

@@ -6,11 +6,15 @@
 </head>
 <body>
 <a th:href="@{/catalogue/products/list}">&larr; К списку товаров</a>
-<h1 th:text="${product.getTitle()}"></h1>
+<h1 th:text="${product.title}"></h1>
 <ul>
   <li><strong>ID</strong>: <span th:text="${product.getId()}"></span></li>
   <li><strong>Название</strong>: <span th:text="${product.getTitle()}"></span></li>
   <li><strong>Описание</strong>: <span th:text="${product.getDetails()}"></span></li>
 </ul>
+
+<form th:method="post" th:action="@{/catalogue/products/{productId}/delete_product(productId=${product.getId()})}">
+    <button type="submit">Удалить</button>
+</form>
 </body>
 </html>
